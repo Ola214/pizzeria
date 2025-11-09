@@ -3,6 +3,7 @@ export const getTablesState = state => state.tables || { tables: [], loading: fa
 export const getAllTables = state => getTablesState(state).tables;
 export const getTablesLoading = state => getTablesState(state).loading;
 export const getTablesError = state => getTablesState(state).error;
+import { API_URL } from '../config';
 
 // action name helper
 const createActionName = name => `app/tables/${name}`;
@@ -23,7 +24,7 @@ export const fetchTables = () => {
   return async dispatch => {
     dispatch(setLoading(true));
     try {
-      const res = await fetch('http://localhost:3131/api/tables');
+      const res = await fetch(`${API_URL}/tables`);
       if (!res.ok) throw new Error('Fetch failed');
       const data = await res.json();
       dispatch(setTables(data));
@@ -39,7 +40,7 @@ export const saveTable = (table) => {
   return async dispatch => {
     dispatch(setLoading(true));
     try {
-      const res = await fetch(`http://localhost:3131/api/tables/${table.id}`, {
+      const res = await fetch(`${API_URL}/tables/${table.id}`, {
         method: 'PATCH',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(table)
