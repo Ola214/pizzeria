@@ -1,0 +1,20 @@
+{
+  "products": [
+    {
+      "id": 1,
+      "name": "Margherita",
+      "price": 22
+    },
+    {
+      "id": 2,
+      "name": "Funghi",
+      "price": 25
+    },
+    {
+      "id": 3,
+      "name": "Pepperoni",
+      "price": 27
+    }
+  ],
+  "orders": []
+}
